@@ -804,7 +804,7 @@ const GoogleMap: React.FC<{apiKey: string, mapId: string}> = ({ apiKey, mapId })
   //   const getPropertyCoordinates = async () => { 
   //     try {
   //       const promises = coordStrings.map(async address => {
-  //         const response = await fetch(`${mapsURL}=${address.address},${address.city},${address.state}&key=${AIzaSyCDOo2Iwxz6C7n2FutDdZTddgDLLs8bNHs}`);
+  //         const response = await fetch(`${mapsURL}=${address.address},${address.city},${address.state}&key=${apiKey}`);
   //         const data = await response.json();
 
   //         if (data.results && data.results.length > 0) {
