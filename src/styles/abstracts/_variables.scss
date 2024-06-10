@@ -1,0 +1,27 @@
+$color-primary: #d4b948;
+$color-primary-light: #fce156;
+$color-primary-dark: #ae9634;
+$color-primary-xtra-dark: #887220;
+
+$color-secondary: #243076;
+$color-secondary-light: #4055d4;
+$color-secondary-dark: #161f5a;
+
+$color-grey-opaque: #cccbc9b9;
+$color-grey-light: #dadada;
+$color-grey: #a1a1a1;
+$color-grey-dark: #464656;
+$color-grey-xtra-dark: #272937;
+$color-white: #fff;
+$color-black: #000;
+
+// FONT
+$default-font-size: 1.6rem;
+
+// SIZING
+$default-border-radius: 5px;
+
+$default-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+  0 1px 3px 1px rgba(60, 64, 67, 0.15);
+$box-shadow-hover: 0 1px 2px 0 rgba(60, 64, 67, 0.5),
+  0 3px 4px 2px rgba(60, 64, 67, 0.2);

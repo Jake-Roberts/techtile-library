@@ -108,6 +108,13 @@
 .logo {
   position: relative;
 }
+
+.component {
+  margin: 5rem auto;
+  height: 50rem;
+  width: 50rem;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {

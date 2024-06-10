@@ -1,0 +1,495 @@
+/*
+0 - 600px: Phone
+600 - 900px:  Tablet - Portrait
+900 - 1200px:  Tablet - Landscape
+1200 - 1800px:  Desktop (normal styles)
+1800px+:  Big Desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+
+ORDER: base + typography > general layout + grid > page layout > components
+*/
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+}
+
+a {
+  color: #000;
+}
+a.btn {
+  border: none;
+  border-radius: 0.2rem;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  background-color: #d4b948;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+a.btn:hover {
+  color: #272937;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5), 0 3px 4px 2px rgba(60, 64, 67, 0.2);
+}
+
+button {
+  background-color: #d4b948;
+  border: none;
+  border-radius: 0.2rem;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: all 0.2s ease;
+}
+button:hover {
+  color: #272937;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5), 0 3px 4px 2px rgba(60, 64, 67, 0.2);
+}
+
+img {
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.5), 0 3px 4px 2px rgba(60, 64, 67, 0.2);
+}
+
+.component {
+  margin: 5rem auto;
+}
+
+body {
+  font-family: "Varela Round", sans-serif;
+  line-height: 1.5;
+}
+body h1,
+body h2 {
+  font-size: 4rem;
+}
+body h3 {
+  font-size: 3rem;
+}
+body p,
+body a {
+  font-size: 2rem;
+}
+body button,
+body input {
+  font-family: "Varela Round", sans-serif;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  color: #fff;
+  background-color: #464656;
+  width: 100%;
+}
+footer div {
+  width: 30%;
+  text-align: center;
+}
+@media only screen and (max-width: 56.25em) {
+  footer div {
+    margin: 0 auto;
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  footer {
+    height: -moz-fit-content;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  z-index: 100;
+}
+header img {
+  width: 8rem;
+  margin: 1rem;
+  box-shadow: none;
+}
+header .navlinks {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 50%;
+}
+header .navlinks a {
+  text-decoration: none;
+  padding: 1rem;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 1.6rem;
+}
+header .navlinks a:hover {
+  color: #d4b948;
+  font-weight: 400;
+}
+header .contact-btn {
+  padding: 10px;
+  text-decoration: none;
+  height: -moz-fit-content;
+  height: fit-content;
+  transition: all 0.2s ease;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  margin-right: 0.5rem;
+}
+
+#intro {
+  position: relative;
+  margin-bottom: 15rem;
+}
+#intro .hero {
+  width: 100%;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#intro .header {
+  position: absolute;
+  top: 75%;
+  right: 15%;
+  margin: 2rem;
+  padding: 2rem;
+  background-color: #dadada;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+#intro .header h1,
+#intro .header p {
+  margin: 0;
+  vertical-align: middle;
+}
+#intro .header h1 img {
+  width: 6rem;
+  vertical-align: middle;
+  box-shadow: none;
+}
+@media only screen and (max-width: 56.25em) {
+  #intro .header {
+    top: 80%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  #intro .header h1 {
+    font-size: 3rem;
+  }
+}
+
+#homes {
+  scroll-margin-top: 200px;
+  margin: 50px auto;
+  height: 500px;
+}
+#homes .homefinder #map {
+  height: 500px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#clients h2 {
+  text-align: center;
+}
+@media only screen and (max-width: 56.25em) {
+  #clients h2 {
+    margin: 0 auto;
+    margin-top: 10rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  #clients h2 {
+    margin: 0 auto;
+    margin-top: 20rem;
+  }
+}
+#clients .buyers,
+#clients .sellers {
+  width: 80%;
+  margin: 2rem auto;
+  display: flex;
+}
+#clients .buyers img,
+#clients .sellers img {
+  width: 60%;
+}
+@media only screen and (max-width: 56.25em) {
+  #clients .buyers img,
+  #clients .sellers img {
+    margin: 2rem auto;
+    width: 100%;
+  }
+}
+#clients .buyers .for-you,
+#clients .sellers .for-you {
+  height: 80%;
+  padding: 5%;
+  background-color: #dadada;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 10;
+}
+#clients .buyers .for-you h3,
+#clients .sellers .for-you h3 {
+  margin: auto;
+}
+@media only screen and (max-width: 56.25em) {
+  #clients .buyers,
+  #clients .sellers {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+#clients .buyers .for-you {
+  margin: auto 0 auto -8rem;
+}
+@media only screen and (max-width: 56.25em) {
+  #clients .buyers .for-you {
+    margin: 0 auto;
+  }
+}
+#clients .sellers .for-you {
+  margin: auto -8rem auto 0;
+}
+@media only screen and (max-width: 56.25em) {
+  #clients .sellers .for-you {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 450) {
+  #clients .buyers,
+  #clients .sellers {
+    flex-direction: column;
+  }
+}
+
+#agents {
+  scroll-margin-top: 80px;
+  padding-top: 8rem;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #dadada;
+  color: #000;
+}
+#agents .heading {
+  margin: 0 auto;
+  padding-top: 5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+#agents .heading h2,
+#agents .heading p {
+  margin: 0;
+  text-align: center;
+}
+@media only screen and (max-width: 37.5em) {
+  #agents .heading {
+    text-align: center;
+    margin: 0 2rem;
+  }
+}
+#agents .profiles {
+  padding: 5rem 10rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: content;
+  overflow-wrap: anywhere;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+#agents .profiles .agent {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 34.5rem;
+  width: 32rem;
+  min-width: 32rem;
+}
+#agents .profiles .agent__side {
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  background-color: #fff;
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+#agents .profiles .agent__side-front {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#agents .profiles .agent__side-front img {
+  width: 75%;
+  margin: 2rem 0;
+}
+#agents .profiles .agent__side-front .name,
+#agents .profiles .agent__side-front .title {
+  margin: 0;
+  text-align: center;
+}
+#agents .profiles .agent__side-front .name {
+  font-weight: 600;
+}
+#agents .profiles .agent__side-front .title {
+  font-size: 1.3rem;
+  height: 4rem;
+}
+#agents .profiles .agent__side-back {
+  height: 100%;
+  transform: rotateY(180deg);
+}
+#agents .profiles .agent__side-back-bio p {
+  font-size: 1.6rem;
+  padding: 2rem;
+  text-align: justify;
+}
+#agents .profiles .agent__side-back-bio p a {
+  font-size: 1.6rem;
+}
+@media only screen and (max-width: 75em) {
+  #agents .profiles .agent {
+    width: 20%;
+  }
+}
+#agents .profiles .agent:hover .agent__side-front {
+  transform: rotateY(-180deg);
+}
+#agents .profiles .agent:hover .agent__side-back {
+  transform: rotateY(0);
+}
+@media only screen and (max-width: 75em) {
+  #agents .profiles {
+    padding: 5rem 0;
+  }
+}
+#contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  padding: 4rem 0;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+#contact .heading {
+  width: 30%;
+}
+#contact .heading h2,
+#contact .heading p {
+  margin: 0;
+}
+@media only screen and (max-width: 56.25em) {
+  #contact .heading {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+#contact #sheetdb-form {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+#contact #sheetdb-form .fields {
+  display: flex;
+  justify-content: space-evenly;
+}
+#contact #sheetdb-form .fields div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 80%;
+}
+#contact #sheetdb-form .fields div label {
+  font-size: 1.6rem;
+}
+#contact #sheetdb-form .fields div input {
+  border: none;
+  border-bottom: 1px solid black;
+  height: 2rem;
+  font-size: 1.6rem;
+  font-family: "Montserrat";
+}
+#contact #sheetdb-form .fields div input:focus-visible {
+  border: none;
+  border-bottom: 2px solid black;
+}
+#contact #sheetdb-form .fields div textarea {
+  width: 100%;
+}
+@media only screen and (max-width: 56.25em) {
+  #contact #sheetdb-form .fields div textarea {
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  #contact #sheetdb-form .fields {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+#contact #sheetdb-form button {
+  height: 4rem;
+  width: 50%;
+  margin: 2rem auto;
+}
+#contact #sheetdb-form #timestamp {
+  display: none;
+  visibility: hidden;
+}
+@media only screen and (max-width: 56.25em) {
+  #contact #sheetdb-form {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  #contact {
+    flex-direction: column;
+  }
+}/*# sourceMappingURL=index.css.map */
