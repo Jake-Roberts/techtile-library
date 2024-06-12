@@ -1,4 +1,12 @@
 .googlemap {
+  height: 50%;
+  width: 50%;
+
+  @include respond(tab-land) {
+    height: 80%;
+    width: 80%;
+  }
+
   #map {
     height: 100%;
     width: 100%;

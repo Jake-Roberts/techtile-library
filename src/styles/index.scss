@@ -4,11 +4,11 @@
 @import "base/base";
 @import "base/typography";
 
+@import "components/dop";
+@import "components/gallery";
+@import "components/gmaps";
+
 @import "layout/footer";
 @import "layout/nav";
 
 @import "pages/home";
-
-@import "components/gmaps";
-@import "components/gallery";
-

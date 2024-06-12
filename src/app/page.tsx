@@ -2,7 +2,7 @@ import Image from "next/image";
 import '../styles/index.scss'
 import GoogleMap from "../components/GoogleMap";
 import Gallery from "@/components/Gallery";
-import { title } from "process";
+import DOP from "@/components/DOP";
 
 const Home = () => {
 
@@ -108,6 +108,7 @@ const Home = () => {
       </div>
       <Gallery items={galleryItems} />
       <GoogleMap {...props}/>
+      <DOP />
     </main>
   );
 }

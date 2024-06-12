@@ -829,16 +829,15 @@ const GoogleMap: React.FC<{apiKey: string, mapId: string}> = ({ apiKey, mapId })
   
   if(propertyCoordinates?.length && apiKey) { 
      return (
-      <div className='component googlemap'>
+      <div className='googlemap component'>
         <div id="map">
           <APIProvider apiKey={apiKey}>
             <ControlledMap propertyCoordinates={propertyCoordinates} mapId={mapId}/>
           </APIProvider>
         </div>
       </div>)
-  } else return (<p className='component'>Loading...</p>)
+  } else return (<p className='googlemap component'>Loading...</p>)
 };
-
 
 const ControlledMap = ({propertyCoordinates, mapId}: {propertyCoordinates: {lat: number, lng: number}[], mapId: string}) => {
 
