@@ -1,8 +1,16 @@
 import Image from "next/image";
 import '../styles/index.scss'
 import GoogleMap from "../components/GoogleMap";
+import Gallery from "@/components/Gallery";
+import { title } from "process";
 
 const Home = () => {
+
+  const galleryItems = [
+    {image:'/mountain3.jpg', title: 'Eye1', description: 'Close up of a blue eye'  },
+    {image:'/mountain2.jpg', title: 'Moutain', description: 'View of Mountain'  },
+    {image:'/mountain1.jpg', title: 'Moutain', description: 'View of zion'  },
+  ]
   // only files in app have access to server-side environment variables
   // for that reason we must pass the .env.local keys as props from here
   const props = {
@@ -98,7 +106,7 @@ const Home = () => {
           </p>
         </a>
       </div>
-
+      <Gallery items={galleryItems} />
       <GoogleMap {...props}/>
     </main>
   );

@@ -1,0 +1,178 @@
+
+.galleryContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    // transition: all 1.5s ease-in-out
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 2;
+}
+
+.mainContent {
+    color: $color-white;
+    text-align: left;
+    max-width: 600px;
+    margin-bottom: 20px;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.mainContent h2 {
+    font-size: 8rem;
+    color: $color-white;
+    padding-left: 2rem;
+    justify-content: left;
+}
+
+.mainContent p {
+    padding-left: 2rem;
+}
+
+.thumbnails {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 10px;
+    z-index: 1;
+}
+
+.thumbnail {
+    width: 20rem;
+    height: 35rem;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, width 1s ease, height 1s ease;
+    border-radius: $default-border-radius;
+
+    
+
+    &.activeThumbnail {
+        transform: scale(1.1);
+        
+    }
+
+    .thumbnailCaption  {
+        position: absolute;
+        bottom: 1rem;
+        left: 0;
+        right: 0;
+        color: $color-white;
+        padding: 5px;
+        text-align: left;
+        border-bottom-left-radius: $default-border-radius;
+        border-bottom-right-radius: $default-border-radius;
+        background-color: $color-black-transparent;
+        
+    }
+
+    .thumbnailCaption p {
+        font-size: 1.5rem;
+    }
+}
+
+.navigation {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navButton {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: $color-grey;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &.activeNavButton {
+        background-color: $color-primary;
+    }
+}
+/* Responsive Styles */
+@media (max-width: 1100px) {
+    .mainContent {
+        left: 5%;
+    
+        h2 {
+            padding-top: 15rem;
+            font-size: 5rem;
+        }
+
+        p {
+            padding-left: 1rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+    }
+    .overlay{
+        flex-direction: column;
+        padding-bottom: 4rem;
+    }
+
+    .thumbnail {
+        width: 15rem;
+        height: 20rem;
+    }
+
+    .thumbnailCaption h4{
+        font-size: 2rem;
+    }
+    .thumbnailCaption p{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainContent {
+        left: 5%;
+        h2 {
+            padding-top: 5rem;
+            font-size: 5rem;
+        }
+
+        p {
+            padding-left: 1rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+    }
+    .overlay{
+        flex-direction: column;
+    }
+
+    .thumbnail {
+        width: 10rem;
+        height: 15rem;
+    }
+
+    .thumbnailCaption h4{
+        font-size: 2rem;
+    }
+    .thumbnailCaption p{
+        font-size: 1.2rem;
+    }
+}
+
