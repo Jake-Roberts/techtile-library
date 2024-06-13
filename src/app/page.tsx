@@ -3,6 +3,7 @@ import '../styles/index.scss'
 import GoogleMap from "../components/GoogleMap";
 import Gallery from "@/components/Gallery";
 import DOP from "@/components/DOP";
+import ContactUs from "@/components/Forms/ContactForm";
 
 const Home = () => {
 
@@ -109,6 +110,8 @@ const Home = () => {
       <Gallery items={galleryItems} />
       <GoogleMap {...props}/>
       <DOP />
+      <ContactUs />
+
     </main>
   );
 }
