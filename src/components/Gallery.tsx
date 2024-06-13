@@ -13,15 +13,15 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
     })
     const [classQueue, setClassQueue] = useState(setupQueue);
 
-    const handleClick = () => {
+    const next = () => {
         setIsTransitioning(true);
         const tempArray = classQueue;
         const currentItem = tempArray[0]
         setTimeout(() => {
-            setIsTransitioning(false);
             tempArray.shift()
             tempArray.push(currentItem)
             setClassQueue(tempArray)
+            setIsTransitioning(false);
         }); // Match the transition duration
     };
 
@@ -43,7 +43,7 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
                         </div>
                 )})}
             </div>
-            <div className="next" onClick={() => handleClick()}>Next</div>
+            <div className="next" onClick={() => next()}>Next</div>
         </div>
     );
 };
