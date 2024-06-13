@@ -1,7 +1,6 @@
 $color-primary: #1E489D;
 $color-primary-light: #788CB6;
-$color-primary-dark: #ae9634;
-$color-primary-xtra-dark: #887220;
+$color-primary-dark: #0e2249;
 
 $color-secondary: #243076;
 $color-secondary-light: #4055d4;
@@ -16,7 +15,7 @@ $color-white: #fff;
 $color-black: #000;
 $color-black-transparent: rgba(0, 0, 0, 0.507);
 
-$color-dop-info-prompt: red;
+$color-dop-info-prompt: $color-primary-light;
 
 // FONT
 $default-font-size: 1.6rem;

@@ -4,24 +4,16 @@ footer {
   align-items: center;
   gap: 2rem;
   color: $color-white;
-  background-color: $color-grey-dark;
+  background-color: $color-primary;
   width: 100%;
+  padding: 1rem 0;
 
-  div {
-    width: 30%;
+  p {
     text-align: center;
-
-    @include respond(tab-port) {
-      margin: 0 auto;
-      width: 90%;
-    }
   }
 
-  @include respond(tab-port) {
-    height: fit-content;
-    flex-direction: column;
-    justify-content: center;
+  @include respond(phone) {
     align-items: center;
-    gap: 0;
+    flex-direction: row;
   }
 }
