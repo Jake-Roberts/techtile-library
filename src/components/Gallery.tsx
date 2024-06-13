@@ -8,12 +8,20 @@ interface GalleryProps {
 
 const Gallery: React.FC<GalleryProps> = ({ items }) => {
     const [isTransitioning, setIsTransitioning] = useState(false);
-    const [name, setName] = useState('image-container');
+    const setupQueue = items.map((item, index) => {
+        return `${index}`
+    })
+    const [classQueue, setClassQueue] = useState(setupQueue);
 
     const handleClick = () => {
         setIsTransitioning(true);
+        const tempArray = classQueue;
+        const currentItem = tempArray[0]
         setTimeout(() => {
             setIsTransitioning(false);
+            tempArray.shift()
+            tempArray.push(currentItem)
+            setClassQueue(tempArray)
         }); // Match the transition duration
     };
 
@@ -24,9 +32,9 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
                     return (
                         <div
                             key={index}
-                            className={`${index === 0 ? 'activeThumbnail' : 'thumbnail'}`}
+                            className={`thumbnail index${classQueue[index]}`}
                         >
-                            <Image src={item.image} alt="test image" height={300} width={200} /> 
+                            <Image src={item.image} alt="test image" height={1149} width={1920} /> 
                             
                             {/* <div className='thumbnailCaption'>
                                 <h4>{item.title}</h4>
@@ -41,6 +49,3 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
 };
 
 export default Gallery;
-
-
-
