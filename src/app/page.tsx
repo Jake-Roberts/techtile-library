@@ -17,6 +17,7 @@ const Home = () => {
     {image:'/gallery/mountain2.webp', title: 'Mountain', description: 'View of Mountain'  },
     {image:'/gallery/mountain1.webp', title: 'Mountain', description: 'View of zion'  },
   ]
+
   // only files in app have access to server-side environment variables
   // for that reason we must pass the .env.local keys as props from here
   const props = {
@@ -28,7 +29,6 @@ const Home = () => {
     <main className="main">
       <TopNav />
       <Gallery items={galleryItems} />
-      <GoogleMap {...props}/>
       <DOP />
       <ContactUs />
       <Footer />
