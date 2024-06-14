@@ -10,9 +10,12 @@ import Footer from "@/components/Footer";
 const Home = () => {
 
   const galleryItems = [
-    {image:'/mountain3.jpg', title: 'Eye1', description: 'Close up of a blue eye'  },
-    {image:'/mountain2.jpg', title: 'Moutain', description: 'View of Mountain'  },
-    {image:'/mountain1.jpg', title: 'Moutain', description: 'View of zion'  },
+    {image:'/gallery/mountain6.webp', title: 'Mountain', description: 'A mountain for sure'  },
+    {image:'/gallery/mountain5.webp', title: 'Mountain', description: 'A mountain for sure'  },
+    {image:'/gallery/mountain4.webp', title: 'Mountain', description: 'A very nice mountain'  },
+    {image:'/gallery/mountain3.webp', title: 'Mountain', description: 'Close up of a blue eye'  },
+    {image:'/gallery/mountain2.webp', title: 'Mountain', description: 'View of Mountain'  },
+    {image:'/gallery/mountain1.webp', title: 'Mountain', description: 'View of zion'  },
   ]
   // only files in app have access to server-side environment variables
   // for that reason we must pass the .env.local keys as props from here

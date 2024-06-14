@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
 interface GalleryProps {
@@ -6,59 +7,45 @@ interface GalleryProps {
 }
 
 const Gallery: React.FC<GalleryProps> = ({ items }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
-    
+    const setupQueue = items.map((item, index) => {
+        return `${index}`
+    })
+    const [classQueue, setClassQueue] = useState(setupQueue);
 
-    const handleClick = (index: number) => {
-        if (index !== currentIndex) {
-            setIsTransitioning(true);
-            setTimeout(() => {
-                setCurrentIndex(index);
-                setIsTransitioning(false);
-            }); // Match the transition duration
-        }
+    const next = () => {
+        setIsTransitioning(true);
+        const tempArray = classQueue;
+        const currentItem = tempArray[0]
+        setTimeout(() => {
+            tempArray.shift()
+            tempArray.push(currentItem)
+            setClassQueue(tempArray)
+            setIsTransitioning(false);
+        }); // Match the transition duration
     };
 
-    
-
     return (
-        <div className='galleryContainer' style={{ backgroundImage: `url(${items[currentIndex].image})` }}>
-            <div className='overlay'>
-            <div className={`${'mainContent'} ${isTransitioning ? 'transition' : ''}`}>
-                    <h2>{items[currentIndex].title}</h2>
-                    <p>{items[currentIndex].description}</p> 
-            </div>
-                <div className='thumbnails'>
-                    {items.map((item, index) => (
+        <div className='galleryContainer'>
+            <div className="thumbnails">
+                {items.map((item, index) => {
+                    return (
                         <div
                             key={index}
-                            className={`${'thumbnail'} ${index === currentIndex ? 'activeThumbnail' : ''}`}
-                            onClick={() => handleClick(index)}
-                            style={{ backgroundImage: `url(${item.image})` }}
+                            className={`thumbnail index${classQueue[index]}`}
                         >
-                            <div className='thumbnailCaption'>
+                            <Image src={item.image} alt="test image" height={1149} width={1920} /> 
+                            
+                            {/* <div className='thumbnailCaption'>
                                 <h4>{item.title}</h4>
                                 <p>{item.description}</p>
-                            </div>
+                            </div> */}
                         </div>
-                    ))}
-                </div>
-                <div className='navigation'>
-                    {items.map((_, index) => (
-                        <div
-                            key={index}
-                            className={`${'navButton'} ${index === currentIndex ? 'activeNavButton' : ''}`}
-                            onClick={() => handleClick(index)}
-                        />
-                    ))}
-                </div>
+                )})}
             </div>
+            <div className="next" onClick={() => next()}>Next</div>
         </div>
     );
 };
 
 export default Gallery;
-
-
-
