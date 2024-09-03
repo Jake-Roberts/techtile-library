@@ -6,7 +6,7 @@ import DOP from "@/components/DOP";
 import ContactUs from "@/components/Forms/ContactForm";
 import TopNav from "@/components/TopNav";
 import Footer from "@/components/Footer";
-
+import Hero1 from "@/components/Hero1";
 const Home = () => {
 
   const galleryItems = [
@@ -26,13 +26,12 @@ const Home = () => {
   }
 
   return (
+  <>
+    <Hero1/>
     <main className="main">
-      <TopNav />
-      <Gallery items={galleryItems} />
-      <DOP />
-      <ContactUs />
-      <Footer />
+      
     </main>
+  </>
   );
 }
 

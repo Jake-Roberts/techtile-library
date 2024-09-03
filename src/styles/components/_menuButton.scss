@@ -1,0 +1,84 @@
+.menuContainer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .menuButton {
+    display: flex;
+    align-items: center;
+    background-color: #66d19e; /* Green color */
+    border: none;
+    border-radius: 35px;
+    padding: 1.8rem 5rem;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: #57b487; /* Darker green on hover */
+    }
+  
+    .circle {
+      width: 50px;
+      height: 50px;
+      background-color: #ffffff; /* White circle */
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+  
+    span {
+      color: #ffffff; /* White text */
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+  }
+  
+  .menu {
+    position: absolute;
+    bottom: 80px; /* Position the menu above the button */
+    background-color: #66d19e; /* Green background */
+    border-radius: 20px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    animation: slideUp 0.3s ease-out;
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      li {
+        margin: 2rem 0;
+  
+        a {
+          text-decoration: none;
+          color: #ffffff; /* White text */
+          font-size: 2rem;
+          font-weight: bold;
+          transition: color 0.3s;
+  
+          &:hover {
+            color: #000000; /* Black on hover */
+          }
+        }
+      }
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
