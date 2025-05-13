@@ -1,29 +1,42 @@
 "use client";
-import React, { useState } from 'react';
-import { APIProvider, Map, AdvancedMarker, MapCameraChangedEvent, MapCameraProps, Pin, InfoWindow, toLatLngLiteral} from '@vis.gl/react-google-maps';
+import React, { useState } from "react";
+import {
+  APIProvider,
+  Map,
+  AdvancedMarker,
+  MapCameraChangedEvent,
+  MapCameraProps,
+  Pin,
+  InfoWindow,
+} from "@vis.gl/react-google-maps";
 // import markerIcon from '../assets/markericon.png'
 // import { useEffect, useState } from 'react'; // For use if generating the coordinates dynamically
 
-const centerPosition = {lat: 40.635603, lng: -111.904922}
+const centerPosition = { lat: 40.635603, lng: -111.904922 };
+// 10.5 is the Salt Lake Valley, 15 is neighborhood or freeway exit
+const defaultZoom = 15;
 
 // use https://www.gps-coordinates.net/ to convert addresses to coordinates for input below
 const propertyCoordinates = [
-  {lat: 40.768260, lng: -111.901100}, // Chick-fil-A Delta Center
-  {lat: 40.768690, lng: -111.888670}, // Chick-fil-A City Creek
-  {lat: 40.725079, lng: -111.856430}, // Chick-fil-A Sugarhouse
-  {lat: 40.700970, lng: -112.025490}, // Chick-fil-A West Valley
-  {lat: 40.650670, lng: -111.939510}, // Chick-fil-A Taylorsville
-  {lat: 40.65855, lng: -111.888201}, // Chick-fil-A Murray North
-  {lat: 40.636142, lng: -111.889318}, // Chick-fil-A Murray South
-  {lat: 40.623162, lng: -111.862369}, // Chick-fil-A Fort Union, Midvale
-  {lat: 40.624043, lng: -111.984369}, // Chick-fil-A West Jordan
-  {lat: 40.567447, lng: -111.890801}, // Chick-fil-A Sandy
-  {lat: 40.5424775, lng: -111.9836537}, // Chick-fil-A The District, South Jordan
-  {lat: 40.524214, lng: -111.879364}, // Chick-fil-A Draper
-  {lat: 40.524214, lng: -111.936244}, // Chick-fil-A Riverton
-]
+  { lat: 40.76826, lng: -111.9011 }, // Chick-fil-A Delta Center
+  { lat: 40.76869, lng: -111.88867 }, // Chick-fil-A City Creek
+  { lat: 40.725079, lng: -111.85643 }, // Chick-fil-A Sugarhouse
+  { lat: 40.70097, lng: -112.02549 }, // Chick-fil-A West Valley
+  { lat: 40.65067, lng: -111.93951 }, // Chick-fil-A Taylorsville
+  { lat: 40.65855, lng: -111.888201 }, // Chick-fil-A Murray North
+  { lat: 40.636142, lng: -111.889318 }, // Chick-fil-A Murray South
+  { lat: 40.623162, lng: -111.862369 }, // Chick-fil-A Fort Union, Midvale
+  { lat: 40.624043, lng: -111.984369 }, // Chick-fil-A West Jordan
+  { lat: 40.567447, lng: -111.890801 }, // Chick-fil-A Sandy
+  { lat: 40.5424775, lng: -111.9836537 }, // Chick-fil-A The District, South Jordan
+  { lat: 40.524214, lng: -111.879364 }, // Chick-fil-A Draper
+  { lat: 40.524214, lng: -111.936244 }, // Chick-fil-A Riverton
+];
 
-const GoogleMap: React.FC<{apiKey: string, mapId: string}> = ({ apiKey, mapId }) => {
+const GoogleMap: React.FC<{ apiKey: string; mapId: string }> = ({
+  apiKey,
+  mapId,
+}) => {
   // const mapsURL = 'https://maps.googleapis.com/maps/api/geocode/json?&address'; // for use if we need dynamic address-to-coordinate conversion
   // const [propertyCoordinates, setPropertyCoordinates] = useState<{lat: number, lng: number}[] | undefined>();
 
@@ -793,7 +806,7 @@ const GoogleMap: React.FC<{apiKey: string, mapId: string}> = ({ apiKey, mapId })
   //     }
   //     return locationData
   //   })
-  
+
   //   const coordStrings = propertyLocations.map(location => {
   //     const address = location.address.split(' ').join('+');
   //     const city = location.city.split(' ').join('+');
@@ -801,7 +814,7 @@ const GoogleMap: React.FC<{apiKey: string, mapId: string}> = ({ apiKey, mapId })
   //     return {address: address, city: city, state: state}
   //   })
 
-  //   const getPropertyCoordinates = async () => { 
+  //   const getPropertyCoordinates = async () => {
   //     try {
   //       const promises = coordStrings.map(async address => {
   //         const response = await fetch(`${mapsURL}=${address.address},${address.city},${address.state}&key=${apiKey}`);
@@ -826,39 +839,71 @@ const GoogleMap: React.FC<{apiKey: string, mapId: string}> = ({ apiKey, mapId })
 
   //   getPropertyCoordinates()
   // }, [])
-  
-  if(propertyCoordinates?.length && apiKey) { 
-     return (
+
+  if (propertyCoordinates?.length && apiKey) {
+    return (
       <div className='googlemap component'>
-        <div id="map">
+        <div id='map'>
           <APIProvider apiKey={apiKey}>
-            <ControlledMap propertyCoordinates={propertyCoordinates} mapId={mapId}/>
+            <ControlledMap
+              propertyCoordinates={propertyCoordinates}
+              mapId={mapId}
+            />
           </APIProvider>
         </div>
-      </div>)
-  } else return (<p className='googlemap component'>Loading...</p>)
+      </div>
+    );
+  } else return <p className='googlemap component'>Loading...</p>;
 };
 
-const ControlledMap = ({propertyCoordinates, mapId}: {propertyCoordinates: {lat: number, lng: number}[], mapId: string}) => {
-
-  return (<Map defaultZoom={10.5} defaultCenter={centerPosition} mapId={mapId} zoomControl scrollwheel disableDoubleClickZoom>
-    {propertyCoordinates.map((coordinates, index) => <CustomMarker key={index} coordinates={coordinates as {lat: number, lng: number}} index={index}/> )}
-  </Map>)
+const ControlledMap = ({
+  propertyCoordinates,
+  mapId,
+}: {
+  propertyCoordinates: { lat: number; lng: number }[];
+  mapId: string;
+}) => {
+  return (
+    <Map
+      defaultZoom={defaultZoom}
+      defaultCenter={centerPosition}
+      mapId={mapId}
+      zoomControl
+      scrollwheel
+      disableDoubleClickZoom
+    >
+      {propertyCoordinates.map((coordinates, index) => (
+        <CustomMarker
+          key={index}
+          coordinates={coordinates as { lat: number; lng: number }}
+          index={index}
+        />
+      ))}
+    </Map>
+  );
 };
 
-const CustomMarker = ({coordinates, index}: {coordinates: {lat: number, lng: number}, index: number}) => {
-  const [open, setOpen] = useState(false)
+const CustomMarker = ({
+  coordinates,
+  index,
+}: {
+  coordinates: { lat: number; lng: number };
+  index: number;
+}) => {
+  const [open, setOpen] = useState(false);
 
-  return  (
+  return (
     <>
       <AdvancedMarker position={coordinates} key={index}>
         <Pin />
       </AdvancedMarker>
       {open && (
-        <InfoWindow position={coordinates} onCloseClick={() => setOpen(false)}><p>Pin info</p></InfoWindow>
+        <InfoWindow position={coordinates} onCloseClick={() => setOpen(false)}>
+          <p>Pin info</p>
+        </InfoWindow>
       )}
     </>
-  )
-}
+  );
+};
 
 export default GoogleMap;

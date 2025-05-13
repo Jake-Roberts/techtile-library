@@ -1,9 +1,9 @@
 import Image from "next/image";
-import '../styles/index.scss'
+import '../styles/index.css'
 import GoogleMap from "../components/GoogleMap";
 import Gallery from "@/components/Gallery";
 import DOP from "@/components/DOP";
-import ContactUs from "@/components/Forms/ContactForm";
+import ContactUs from "@/components/ContactForm";
 import TopNav from "@/components/TopNav";
 import Footer from "@/components/Footer";
 import Hero1 from "@/components/Hero1";

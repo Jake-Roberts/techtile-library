@@ -1,0 +1,27 @@
+.contact-cta {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  background-color: $color-white;
+  color: black;
+  margin: 0 auto -5rem;
+  padding: 5rem 10rem;
+  z-index: 1;
+
+  a {
+    padding: 1rem 2rem;
+    background-color: $color-primary;
+    color: $color-white;
+    border-radius: 0.3rem;
+    border: 0.2rem solid transparent;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      border: 0.2rem solid $color-primary;
+      background-color: $color-white;
+      color: $color-primary;
+    }
+  }
+}

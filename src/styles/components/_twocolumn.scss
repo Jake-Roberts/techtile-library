@@ -1,0 +1,23 @@
+.two-column {
+  .content {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    width: 90%;
+    margin: 5rem auto;
+
+    .img-wrapper {
+      width: 50%;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    .text {
+      width: 50%;
+      padding: 2rem;
+    }
+  }
+}
